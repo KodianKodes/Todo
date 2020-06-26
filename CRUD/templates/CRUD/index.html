@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> 
+</head>
+<body>
+    <h3>Hello world again</h3>
+
+
+    <form method='POST' action='/'>
+        {{form.title}}
+        <input type="submit" name='create Task'>
+    </form>
+    {% for  shown in display %}
+        <div>
+            <p>{{shown}}</p>
+        </div>
+
+    {% endfor %}
+</body>
+</html>
