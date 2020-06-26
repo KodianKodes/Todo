@@ -10,9 +10,9 @@ def index(request):
     form = CrudForm()
 
     if request.method == "POST":
-        form = CrudForm(request.Post)
+        form = CrudForm(request.POST)
         if form.is_valid():
-            fom.save()
+            form.save()
         return redirect
 
     context = {
