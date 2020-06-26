@@ -1,14 +1,15 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect # make use of reques and render function
 from django.http import HttpResponse
-from .models import *
+from .models import *  #importing all the model(classes) for my views
 from .forms import *
 
 # Create your views here.
 def index(request):
+    """Created a class 'crud' and call all the objects of crud for views page. """
     crud_model = Crud.objects.all()
 
-    form = CrudForm()
-
+    form = CrudForm() #declaration of form and assigning it to class model Crud.
+    
     if request.method == "POST":
         form = CrudForm(request.POST)
         if form.is_valid():
@@ -25,7 +26,20 @@ def update(request, pk):
     task = Crud.objects.get(id=pk)
 
     form = CrudForm(instance=task)
-    
+
+    if request.method == 'POST':
+        form = CrudForm(request.POST, instance=task)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+
     context = {'form':form}
      
     return render(request, 'CRUD/update_crud.html', context)
+
+
+def delete(request, pk):
+    item = Crud.objects.get(id=pk)
+
+    context = {'item':item}
+    return render(request, 'CRUD/delete.html', context)
