@@ -40,6 +40,9 @@ def update(request, pk):
 
 def delete(request, pk):
     item = Crud.objects.get(id=pk)
+    if request.method == "POST":
+        item.delete()
+        return redirect('/')
 
     context = {'item':item}
     return render(request, 'CRUD/delete.html', context)

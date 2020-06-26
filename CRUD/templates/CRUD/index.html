@@ -16,10 +16,13 @@
     </form>
     {% for  shown in display %}
         <div>
-            <a href="{% url 'update_crud' shown.id %}">update</a>
+            <a href="{% url 'update_crud' shown.id %}">Update</a>
             <a href="{% url 'delete' shown.id %}">Delete</a>
-       
-            <p>{{shown}}</p>
+            {% if shown.complete == True %}
+                <strike>{{shown}}</strike>
+                {% else %}
+                <span>{{shown}}</span>
+            {% endif %}
         </div>
 
     {% endfor %}
