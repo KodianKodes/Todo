@@ -23,5 +23,9 @@ def index(request):
 
 def update(request, pk):
     task = Crud.objects.get(id=pk)
+
+    form = CrudForm(instance=task)
+    
+    context = {'form':form}
      
-    return render(request, 'CRUD/update_crud.html')
+    return render(request, 'CRUD/update_crud.html', context)

@@ -15,7 +15,7 @@
         <input type="submit" name='create Task'>
     </form>
     {% for  shown in display %}
-        <a href="{% url 'update' shown.id %}">update</a>
+        <a href="{% url 'update_crud' shown.id %}">update</a>
         <div>
             <p>{{shown}}</p>
         </div>
