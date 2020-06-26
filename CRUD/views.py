@@ -13,7 +13,7 @@ def index(request):
         form = CrudForm(request.POST)
         if form.is_valid():
             form.save()
-        return redirect
+        return redirect('/')
 
     context = {
         'display': crud_model,
@@ -21,4 +21,7 @@ def index(request):
          }
     return render(request, 'CRUD/index.html', context)
 
- 
+def update(request, pk):
+    task = Crud.objects.get(id=pk)
+     
+    return render(request, 'CRUD/update_crud.html')
