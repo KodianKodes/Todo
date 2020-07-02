@@ -5,8 +5,9 @@ from .forms import *
 
 # Create your views here.
 def index(request):
-    """Created a class 'crud' and call all the objects of crud for views page. """
+    """Created a class 'crud' and call all the objects of crud for views page.  """
     crud_model = Crud.objects.all()
+
 
     form = CrudForm() #declaration of form and assigning it to class model Crud.
     
@@ -18,7 +19,7 @@ def index(request):
 
     context = {
         'display': crud_model,
-         'form':form
+        'form':form
          }
     return render(request, 'CRUD/index.html', context)
 
@@ -33,7 +34,9 @@ def update(request, pk):
             form.save()
             return redirect('/')
 
-    context = {'form':form}
+    context = {
+        'form':form
+        }
      
     return render(request, 'CRUD/update_crud.html', context)
 
@@ -44,5 +47,7 @@ def delete(request, pk):
         item.delete()
         return redirect('/')
 
-    context = {'item':item}
+    context = {
+        'item':item,
+        }
     return render(request, 'CRUD/delete.html', context)
