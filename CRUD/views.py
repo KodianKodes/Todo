@@ -51,3 +51,10 @@ def delete(request, pk):
         'item':item,
         }
     return render(request, 'CRUD/delete.html', context)
+
+
+def login(request):
+    return render(request, 'CRUD/login.html')
+
+def register(request):
+    return render(request, 'CRUD/register_form.html')
